@@ -46,23 +46,27 @@ public class NumberInputField extends TextInputField {
 			}
 		}
 
+		/**
+		 * SEONU
+		 * Refactoring
+		 * extract variable
+		 */
 		// Typing
-		if (focus) {
-			applet.textSize(20);
-			if (applet.keyPressEvent) {
-				if (applet.key == '\u0008') { // backspace
-					if (text.length() > 0) {
-						text = text.substring(0, text.length() - 1);
-					}
-				} else if (keys.contains(applet.key)) {
-					if (applet.textWidth(text) < width - 20) {
-						if (applet.key != '\uFFFF' && applet.key != '\n') {
-							text += applet.key;
-						}
-					}
-				}
+		
+		if(focus) applet.textSize(20);
+		
+		if (focus&&applet.keyPressEvent)
+			if (applet.key == '\u0008'&&text.length()>0) // backspace 
+				text = text.substring(0, text.length() - 1);
+
+			else if (keys.contains(applet.key)) {
+				boolean IsSatisfyWidth = applet.textWidth(text) < width - 20;
+				boolean FilterKey = applet.key != '\uFFFF' && applet.key != '\n';
+				
+				if (IsSatisfyWidth&&FilterKey) 
+						text += applet.key;
 			}
-		}
+			
 	}
 
 
