@@ -35,7 +35,9 @@ import project_16x16.components.Tile.TileType;
 import project_16x16.Audio.BGM;
 import project_16x16.SideScroller.GameScenes;
 import project_16x16.ui.Anchor;
+import project_16x16.ui.AnchorOrigin;
 import project_16x16.ui.ScrollBarVertical;
+import project_16x16.ui.Stretch;
 import project_16x16.ui.Tab;
 import project_16x16.windows.ImportLevelWindow;
 import project_16x16.windows.LoadLevelWindow;
@@ -168,8 +170,10 @@ public class GameplayScene extends PScene {
 
 		// Init ScollBar
 		Anchor scrollBarAnchor = new Anchor(applet, -20, 102, 20, 50);
-		scrollBarAnchor.anchorOrigin = Anchor.AnchorOrigin.TopRight;
-		scrollBarAnchor.stretch = Anchor.Stretch.Vertical;
+		//scrollBarAnchor.anchorOrigin = Anchor.AnchorOrigin.TopRight;
+		scrollBarAnchor.setAnchorOrigin(AnchorOrigin.TopRight);
+		//scrollBarAnchor.stretch = Anchor.Stretch.Vertical;
+		scrollBarAnchor.setStretch(Stretch.Vertical);
 		scrollBar = new ScrollBarVertical(scrollBarAnchor);
 		scrollBar.setBarRatio(getBarRatio(getTotalInventoryItems() / 6, 50, 3f));
 
@@ -379,7 +383,7 @@ public class GameplayScene extends PScene {
 		// Display ScrollBar
 		scrollBar.display();
 		scrollBar.update();
-		scroll_inventory = (int) PApplet.map(scrollBar.barLocation, 1, 0, -getInventorySize() + applet.height - 8, 0);
+		scroll_inventory = (int) PApplet.map(scrollBar.getBarLocation(), 1, 0, -getInventorySize() + applet.height - 8, 0);
 
 		// Display Top Bar TODO
 //		applet.noStroke();
@@ -746,7 +750,7 @@ public class GameplayScene extends PScene {
 	
 	public void scrollInventoryBar(MouseEvent event) {
 		scrollBar.mouseWheel(event);
-		scroll_inventory = (int) PApplet.map(scrollBar.barLocation, 1, 0,
+		scroll_inventory = (int) PApplet.map(scrollBar.getBarLocation(), 1, 0,
 				-getInventorySize() + applet.height - 8, 0);
 	}
 

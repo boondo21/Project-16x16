@@ -242,5 +242,13 @@ public class Anchor {
 		this.localY = localY;
 	}
 
+	public Stretch getStretch() {
+		return stretch;
+	}
+
+	public void setStretch(Stretch stretch) {
+		this.stretch = stretch;
+	}
+
 	
 }
