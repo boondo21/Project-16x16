@@ -149,6 +149,7 @@ public final class Camera extends ZoomPan {
 		applet.translate(-offset.x, -offset.y);
 		applet.line(applet.width / 2 - length * 2, applet.height / 2, applet.width / 2 + length * 2, applet.height / 2);
 		applet.popMatrix();
+		
 		if (following) {
 			applet.rectMode(PApplet.CENTER);
 			applet.rect(getCoordToDisp(followObject.pos).x, getCoordToDisp(followObject.pos).y, length * 2, length * 2);
@@ -198,6 +199,11 @@ public final class Camera extends ZoomPan {
 	 * 
 	 * @see {@linkplain ZoomPan#transform() transform()}
 	 */
+	/**
+	 * SEONU
+	 * Refactoring
+	 * extract variable & Method
+	 */
 	private void update() {
 		offset = new PVector(applet.width / 2, applet.height / 2);
 
@@ -208,28 +214,26 @@ public final class Camera extends ZoomPan {
 			}
 		}
 
-		rotation = PApplet.lerp(rotation, rotationTarget, lerpSpeed);
-		applet.translate(offset.x, offset.y);
-		applet.rotate(rotation + shakeRotationOffset);
-		applet.translate(-offset.x, -offset.y);
-		transform();
+		transformApplet();
 
 		float scale = PApplet.lerp((float) getZoomScaleX(), zoom, lerpSpeed);
 		setZoomScaleX(scale);
 		setZoomScaleY(scale);
 
-		if (following && ((deadZoneScreen && !withinScreenDeadZone()) || ((deadZoneWorld && !withinWorldDeadZone()))
-				|| (!deadZoneScreen && !deadZoneWorld))) {
-			setPanOffset(
-					PApplet.lerp(getPanOffset().x, ((-followObject.pos.x - followObjectOffset.x + offset.x) * zoom),
-							lerpSpeed) - shakeOffset.x,
-					PApplet.lerp(getPanOffset().y, ((-followObject.pos.y - followObjectOffset.y + offset.y) * zoom),
-							lerpSpeed) - shakeOffset.y);
-		} else if (!following) {
+		boolean deadZoneScreenwithScreenZone =deadZoneScreen && !withinScreenDeadZone();
+		boolean deadZoneWorldwithWorldZone = (deadZoneWorld && !withinWorldDeadZone());
+		boolean deadZoneScreenAndWorld = (!deadZoneScreen && !deadZoneWorld);
+		
+		if (following && (deadZoneScreenwithScreenZone || deadZoneWorldwithWorldZone || deadZoneScreenAndWorld)) {
+			setPanoffset_Dead();
+		}
+		else if (!following) {
+			
 			setPanOffset(
 					PApplet.lerp(getPanOffset().x, ((targetPosition.x + offset.x) * zoom), lerpSpeed) - shakeOffset.x,
 					PApplet.lerp(getPanOffset().y, ((targetPosition.y + offset.y) * zoom), lerpSpeed) - shakeOffset.y);
 		}
+		
 		logicalPosition = PVector.mult(PVector.sub(getPanOffset(), new PVector(applet.width / 2 * zoom, applet.height / 2 * zoom)),
 				-1 / zoom);
 
@@ -245,6 +249,33 @@ public final class Camera extends ZoomPan {
 				shakeRotationOffset = 0;
 			}
 		}
+	}
+
+	private void setPanoffset_Dead() {
+		float start;
+		float stop;
+		float amt;
+		float panX;
+		float panY;
+		start = getPanOffset().x;
+		stop = ((-followObject.pos.x - followObjectOffset.x + offset.x) * zoom);
+		amt = lerpSpeed;
+		
+		panX = PApplet.lerp(start,stop,amt) - shakeOffset.x;
+		
+		start = getPanOffset().y;
+		stop = ((-followObject.pos.y - followObjectOffset.y + offset.y) * zoom);
+		panY = PApplet.lerp(start, stop,amt) - shakeOffset.y; 
+		
+		setPanOffset( panX, panY);
+	}
+
+	private void transformApplet() {
+		rotation = PApplet.lerp(rotation, rotationTarget, lerpSpeed);
+		applet.translate(offset.x, offset.y);
+		applet.rotate(rotation + shakeRotationOffset);
+		applet.translate(-offset.x, -offset.y);
+		transform();
 	}
 
 	/**
