@@ -75,6 +75,11 @@ public class TextInputField extends PClass {
 	/**
 	 * Updates the window based on different player input
 	 */
+	/**
+	 * SEONU
+	 * Refactoring
+	 * extract variable
+	 */
 	public void update() {
 
 		// Focus Event
@@ -93,18 +98,17 @@ public class TextInputField extends PClass {
 		// Typing
 		if (focus) {
 			applet.textSize(20);
-			if (applet.keyPressEvent) {
-				if (applet.key != '\u0008') {
-					if (applet.textWidth(text) < width - 20) {
-						if (applet.key != '\uFFFF' && applet.key != '\n') {
-							text += applet.key;
-						}
-					}
-				} else {
-					if (text.length() > 0) {
-						text = text.substring(0, text.length() - 1);
-					}
-				}
+			boolean isKeyPressEvent = applet.keyPressEvent;
+			boolean isNot0008Key = applet.key != '\u0008';
+			boolean isNotCertainKey = applet.key != '\uFFFF'&&applet.key != '\n';
+			boolean compareWidth = applet.textWidth(text) < width - 20;
+			boolean isNotZeroLength = text.length() > 0;
+			
+			if(isKeyPressEvent&&isNot0008Key&&isNotCertainKey&&compareWidth) {
+				text += applet.key;
+			}
+			else if(isKeyPressEvent&&isNot0008Key&&isNotZeroLength){
+				text = text.substring(0, text.length() - 1);
 			}
 		}
 	}
