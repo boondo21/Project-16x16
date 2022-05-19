@@ -14,31 +14,52 @@ public class Tab extends PClass{
 	private float incrementSpeed;
 	
 	//Basic constructor for tab
+	/**
+	 * SEONU
+	 * Refactoring
+	 * extract variable
+	 */
 	public Tab(SideScroller a, String[] texts, int tabs) {
 		super(a);
+		
 		tabCount = tabs;
 		buttons = new Button[tabCount];
 		incrementSpeed = 1;
 		movingIncrement = 0;
+		
 		for(int i = 0; i < tabCount; i++) {
 			buttons[i] = new Button(a);
 			buttons[i].setText(texts[i]);
+			int _x;
+			int _y = (applet.height / 2) - 265;
+			
 			if(i == 0) {
-				buttons[i].setPosition((applet.width / 2) - 155, (applet.height / 2) - 265);
+				_x = (applet.width / 2) - 155;
 			} else {
-				buttons[i].setPosition(buttons[i - 1].getX() + ((buttons[i - 1].getW() + buttons[i].getW()) / 2), (applet.height / 2) - 265);
+				_x = buttons[i - 1].getX() + ((buttons[i - 1].getW() + buttons[i].getW()) / 2);
 			}
+			
+			buttons[i].setPosition(_x, _y);
 		}
 	}
 	
 	//Update all buttons the tab contains
+	/**
+	 * SEONU
+	 * Refactoring
+	 * extract variable
+	 */
 	public void update() {
 		for(int j = 0; j < tabCount; j++) {
-			if(j == 0) {
-				buttons[j].setPosition((applet.width / 2) - 155, (applet.height / 2) - 265);
-			} else {
-				buttons[j].setPosition(buttons[j - 1].getX() + ((buttons[j - 1].getW() + buttons[j].getW()) / 2), (applet.height / 2) - 265);
-			}
+			int _x;
+			int _y = (applet.height / 2) - 265;
+			
+			if(j == 0) 
+				_x = (applet.width / 2) - 155;
+			else 
+				_x = buttons[j - 1].getX() + ((buttons[j - 1].getW() + buttons[j].getW()) / 2);
+			
+			buttons[j].setPosition(_x,_y);
 		}
 		for(int i = 0; i < tabCount; i++) {
 			buttons[i].update();
@@ -66,6 +87,7 @@ public class Tab extends PClass{
 		applet.strokeWeight(8);
 		applet.stroke(47, 54, 73);
 		applet.fill(0, 150);
+		
 		for(int i = 0; i < tabCount; i++) {
 			if(activeButton != i) {
 				applet.rectMode(CENTER);
@@ -75,10 +97,21 @@ public class Tab extends PClass{
 	}
 	
 	//Selection animation between buttons and active button edge
+	/**
+	 * SEONU
+	 * Refactoring
+	 * extract Method
+	 */
 	public void displayActive() {
+		
 		applet.strokeWeight(8);
 		applet.stroke(255, 255, 255);
 		applet.fill(0, 0);
+		
+		compareButtonDistance();
+	}
+
+	private void compareButtonDistance() {
 		if(buttonDistance == movingIncrement) {
 			applet.rectMode(CENTER);
 			applet.rect(buttons[activeButton].getX(), buttons[activeButton].getY(), buttons[activeButton].getW(), buttons[activeButton].getH());
