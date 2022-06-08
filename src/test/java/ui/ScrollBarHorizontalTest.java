@@ -40,4 +40,20 @@ public class ScrollBarHorizontalTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check display
+	 * Input: display 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testdisplay() {
+		try {
+			scrollBarHorizontal.applet = new SideScroller(); 
+			scrollBarHorizontal.display();
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
