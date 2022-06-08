@@ -114,4 +114,23 @@ class ParticleChildControllerTest {
 		controller.onUpdateEvent();
 		assertEquals(controller.getParticleSystems().size(), 0);
 	}
+
+	/**
+	 * Purpose: Test for onParticleRunEvent()
+	 * Input: Particle p
+	 * Expected:
+	 * 		now there is one more particleSystem with active particle
+	 * 		its number should be 1
+	 */
+	@Test
+	void testOnParticleRunEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		
+		ParticleChildController controller = new ParticleChildController(system, 0, true);
+		controller.onParticleRunEvent(p);
+		assertEquals(controller.getParticleSystems().size(), 1);
+	}
 }
