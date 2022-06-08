@@ -61,4 +61,21 @@ class ParticlesHandlerTest {
 		assertTrue(handler.getActiveParticles().size() == 1);
 	}
 
+	/**
+	 * Purpose: Test for hasActiveParticles()
+	 * Input: no input for hasActiveParticles()
+	 * Expected:
+	 * 		there should be 0 active particles before new one and 1 after newParticle() is called
+	 */
+	@Test
+	void testHasActiveParticles() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(null, img, 5, 5, 5);
+		ParticlesHandler handler = new ParticlesHandler(system, applet);
+		assertFalse(handler.hasActiveParticles());
+		handler.newParticle();
+		assertTrue(handler.hasActiveParticles());
+	}
+
 }
