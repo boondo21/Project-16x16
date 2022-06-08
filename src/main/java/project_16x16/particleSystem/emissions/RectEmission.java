@@ -34,18 +34,26 @@ public class RectEmission extends ParticleEmission {
 	public void newPosition() {
 		PVector p = position.copy();
 		Random ran = new Random();
-		p.x += (ran.nextFloat()*width/2f)-width/2;
-		p.y += (ran.nextFloat()*height/2f)-height/2;
+		p.x += (ran.nextFloat()*getWidth()/2f)-getWidth()/2;
+		p.y += (ran.nextFloat()*getHeight()/2f)-getHeight()/2;
 		setPosition(p);
 	}
 	
 	@Override
 	public ParticleEmission copy() {
-		return new  RectEmission(position, velocity, acceleration, width, height);
+		return new  RectEmission(position, getVelocity(), getAcceleration(), getWidth(), getHeight());
 	}
 
 	public float determinePhi() {
 		float phi = (float) (2*Math.PI*Math.random());
 		return phi;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
 	}
 }

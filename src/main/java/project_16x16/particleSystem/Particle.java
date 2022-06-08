@@ -32,7 +32,7 @@ public class Particle {
 	private static final float updateStep = (float) 1.0;
 	
 	public Particle (SideScroller applet, PImage image) {
-		this.applet = applet;
+		this.setApplet(applet);
 		this.setImage(image);
 		setFrameCount(0);
 	}
@@ -63,14 +63,14 @@ public class Particle {
 	
 	private void draw() {
 		
-		applet.pushMatrix();
-		applet.translate(getPosition().x, getPosition().y);
+		getApplet().pushMatrix();
+		getApplet().translate(getPosition().x, getPosition().y);
 		if (isUseCustomeSize())
-			applet.scale(getSize(), getSize());
+			getApplet().scale(getSize(), getSize());
 		
-		applet.image(getImage(), 0, 0);
-		applet.noTint();
-		applet.popMatrix();
+		getApplet().image(getImage(), 0, 0);
+		getApplet().noTint();
+		getApplet().popMatrix();
 	}
 	
 	public void setLifespan(float lifespan) {
@@ -159,5 +159,13 @@ public class Particle {
 
 	public void setImage(PImage image) {
 		this.image = image;
+	}
+
+	public SideScroller getApplet() {
+		return applet;
+	}
+
+	public void setApplet(SideScroller applet) {
+		this.applet = applet;
 	}
 }

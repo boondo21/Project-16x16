@@ -66,12 +66,12 @@ public class ParticleAnimationController implements ParticleEventListener {
 		}
 	}
 	
-	private PImage getImage(int frameCount) {
+	public PImage getImage(int frameCount) {
 		int id = (frameCount/getRate()) % getImages().size();
 		return getImages().get(id);
 	}
 	
-	private PImage getImage(float maxLife, float currentLife) {
+	public PImage getImage(float maxLife, float currentLife) {
 		int id = (int) PApplet.map(currentLife, maxLife, 0, 0, getImages().size()-1);
 		return getImages().get(id);
 	}

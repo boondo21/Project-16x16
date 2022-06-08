@@ -39,21 +39,21 @@ public abstract class ParticleEmission {
 	
 	public void newVelocity(float phi) {
 		newVelocity = new PVector();
-		newVelocity.x = (float) (velocity*Math.cos(phi));
-		newVelocity.y = (float) (velocity*Math.sin(phi));
+		newVelocity.x = (float) (getVelocity()*Math.cos(phi));
+		newVelocity.y = (float) (getVelocity()*Math.sin(phi));
 	}
 
 	public void newAcceleration(float phi) {
 		newAcceleration = new PVector();
-		newAcceleration.x = (float) (acceleration*Math.cos(phi));
-		newAcceleration.y = (float) (acceleration*Math.sin(phi));
+		newAcceleration.x = (float) (getAcceleration()*Math.cos(phi));
+		newAcceleration.y = (float) (getAcceleration()*Math.sin(phi));
 	}
 
 	public void newPosition() {
 		PVector p = position.copy();
 		Random ran = new Random();
-		p.x += (ran.nextFloat()*spread*2f)-spread;
-		p.y += (ran.nextFloat()*spread*2f)-spread;
+		p.x += (ran.nextFloat()*getSpread()*2f)-getSpread();
+		p.y += (ran.nextFloat()*getSpread()*2f)-getSpread();
 		newPosition = p;
 	}
 	
@@ -70,5 +70,21 @@ public abstract class ParticleEmission {
 		newPosition();
 		newVelocity(phi);
 		newAcceleration(phi);
+	}
+
+	public float getVelocity() {
+		return velocity;
+	}
+
+	public float getAcceleration() {
+		return acceleration;
+	}
+
+	public float getSpread() {
+		return spread;
+	}
+
+	public float getAngle() {
+		return angle;
 	}
 }

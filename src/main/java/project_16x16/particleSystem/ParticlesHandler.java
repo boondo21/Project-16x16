@@ -21,8 +21,8 @@ public class ParticlesHandler {
 	private ArrayList<Particle> inactiveParticles;
 	
 	public ParticlesHandler(ParticleSystem particleSystem, SideScroller applet) {
-		this.applet = applet;
-		this.particleSystem = particleSystem;
+		this.setApplet(applet);
+		this.setParticleSystem(particleSystem);
 		
 		setActiveParticles(new ArrayList<Particle>());
 		setInactiveParticles(new ArrayList<Particle>());
@@ -32,9 +32,9 @@ public class ParticlesHandler {
 		runParticles();
 		
 		if (nextTick())
-			spawnParticles(particleSystem.getSpawnAmount());
+			spawnParticles(getParticleSystem().getSpawnAmount());
 		
-		particleSystem.onUpdateEvent();
+		getParticleSystem().onUpdateEvent();
 	}
 	
 	public boolean hasActiveParticles() {
@@ -42,9 +42,9 @@ public class ParticlesHandler {
 	}
 	
 	public Particle newParticle() {
-		Particle p = new Particle(applet, particleSystem.getImage());
-		p.spawn(particleSystem.getEmissionConsumer(), particleSystem.getLifespan()*ParticleSystem.FRAMERATE);
-		particleSystem.onParticleSpawnEvent(p);
+		Particle p = new Particle(getApplet(), getParticleSystem().getImage());
+		p.spawn(getParticleSystem().getEmissionConsumer(), getParticleSystem().getLifespan()*ParticleSystem.FRAMERATE);
+		getParticleSystem().onParticleSpawnEvent(p);
 		getActiveParticles().add(p);
 		return p;
 	}
@@ -53,10 +53,10 @@ public class ParticlesHandler {
 		ArrayList<Particle> deadParticles = new ArrayList<Particle>();
 		for(Particle p : getActiveParticles()) {
 			p.run();
-			particleSystem.onParticleRunEvent(p);
+			getParticleSystem().onParticleRunEvent(p);
 			if (p.isDead()) {
 				deadParticles.add(p);
-				particleSystem.onParticleDeathEvent(p);
+				getParticleSystem().onParticleDeathEvent(p);
 			}
 		}
 		getActiveParticles().removeAll(deadParticles);
@@ -85,12 +85,12 @@ public class ParticlesHandler {
 	}
 	
 	private void respawnParticle(Particle p) {
-		p.spawn(particleSystem.getEmissionConsumer(), particleSystem.getLifespan()*ParticleSystem.FRAMERATE);
-		particleSystem.onParticleSpawnEvent(p);
+		p.spawn(getParticleSystem().getEmissionConsumer(), getParticleSystem().getLifespan()*ParticleSystem.FRAMERATE);
+		getParticleSystem().onParticleSpawnEvent(p);
 	}
 	
 	private boolean nextTick() {
-		return particleSystem.isSpawn() && applet.frameCount % (ParticleSystem.FRAMERATE/particleSystem.getSpawnRate()) == 0;
+		return getParticleSystem().isSpawn() && getApplet().frameCount % (ParticleSystem.FRAMERATE/getParticleSystem().getSpawnRate()) == 0;
 	}
 
 	public ArrayList<Particle> getActiveParticles() {
@@ -107,5 +107,21 @@ public class ParticlesHandler {
 
 	public void setInactiveParticles(ArrayList<Particle> inactiveParticles) {
 		this.inactiveParticles = inactiveParticles;
+	}
+
+	public SideScroller getApplet() {
+		return applet;
+	}
+
+	public void setApplet(SideScroller applet) {
+		this.applet = applet;
+	}
+
+	public ParticleSystem getParticleSystem() {
+		return particleSystem;
+	}
+
+	public void setParticleSystem(ParticleSystem particleSystem) {
+		this.particleSystem = particleSystem;
 	}
 }

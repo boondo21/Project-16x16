@@ -28,16 +28,24 @@ public class RotationEmission extends ParticleEmission {
      */
 	public RotationEmission(PVector position, float velocity, float acceleration, float spread, float div) {
 		super(position, velocity, acceleration, spread);
-		this.div = div;
+		this.setDiv(div);
 	}
 	
 	public float determinePhi() {
-		phi += div;
+		phi += getDiv();
 		return phi;
 	}
 	
 	@Override
 	public ParticleEmission copy() {
-		return new RotationEmission(position, velocity, acceleration, spread, div);
+		return new RotationEmission(position, getVelocity(), getAcceleration(), getSpread(), getDiv());
+	}
+
+	public float getDiv() {
+		return div;
+	}
+
+	public void setDiv(float div) {
+		this.div = div;
 	}
 }
