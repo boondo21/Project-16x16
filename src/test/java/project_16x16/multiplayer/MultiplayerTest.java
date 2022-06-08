@@ -91,4 +91,19 @@ class MultiplayerTest {
 		m2.exit();
 		m1.exit();
 	}
+	
+	/**
+	 * Purpose: Test for writeData() for host
+	 * Input: SideScroller s, hostIP - "127.0.0.1", port - 25561, isHost - true
+	 * Expected:
+	 * 		data should be successfully written
+	 */
+	@Test
+	void testWriteData() throws ConnectException {
+		SideScroller s = new SideScroller();
+		Multiplayer m = new Multiplayer(s, "127.0.0.1", 25561, true);
+		assertTrue(m.getServer().active());
+		m.writeData("Hello test");
+		m.exit();
+	}
 }
