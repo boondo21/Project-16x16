@@ -39,4 +39,23 @@ class ParticleNoLoopControllerTest {
 		controller.onCreateEvent(system);
 		assertSame(controller.getParticleSystem(), system);		
 	}
+	
+	/**
+	 * Purpose: Test for reset() 
+	 * Input: no input for reset()
+	 * Expected:
+	 * 		totalSpawned number should be 0
+	 * 		PartycleSystem.isSpawn should be true
+	 */
+	@Test
+	void testReset() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		ParticleNoLoopController controller = new ParticleNoLoopController(20);
+		controller.onCreateEvent(system);
+		controller.reset();
+		assertEquals(controller.getTotalSpawned(), 0);
+		assertTrue(controller.getParticleSystem().isSpawn());
+	}
 }
