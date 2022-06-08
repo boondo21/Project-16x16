@@ -90,4 +90,20 @@ public class AnchorTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: get Container
+	 * Input: getContainer  
+	 * Expected:
+	 * 	return Anchor instance
+	 */
+	@Test
+	public void testgetContainer() {
+		// hasContainer == false
+		assertEquals(anchor.getContainer(), null);
+	
+		// tmp hasContainer == true
+		Anchor tmp = new Anchor(anchor, 10, 10, 10, 10);
+		assertEquals(tmp.getContainer(), anchor);
+	}
 }
