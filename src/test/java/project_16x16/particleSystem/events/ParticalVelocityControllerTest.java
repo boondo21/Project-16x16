@@ -24,4 +24,22 @@ class ParticalVelocityControllerTest {
 		ParticalVelocityController controller = new ParticalVelocityController(new PVector(0, 0));
 		assertEquals(controller.getVelocity(), new PVector(0, 0));
 	}
+
+	/**
+	 * Purpose: Test for onParticleSpawnEvent() 
+	 * Input: Particle p with velocity set to PVector(1, 1)
+	 * Expected:
+	 * 		new velocity should be equal to the sum of original and new velocities
+	 */
+	@Test
+	void testOnParticleSpawnEvent() {
+		PVector velocity = new PVector(0, 0);
+		ParticalVelocityController controller = new ParticalVelocityController(velocity);
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		p.setVelocity(new PVector(1, 1));
+		controller.onParticleSpawnEvent(p);
+		assertEquals(p.getVelocity(), velocity.add(new PVector(1, 1)));
+	}
 }
