@@ -22,16 +22,24 @@ public class ParticalVelocityController implements ParticleEventListener {
 	 * @param velocity PVector velocity
 	 */
 	public ParticalVelocityController(PVector velocity) {
-		this.velocity = velocity;
+		this.setVelocity(velocity);
 	}
 
 	@Override
 	public void onParticleSpawnEvent(Particle particle) {
-		particle.updateVelocity(velocity);
+		particle.updateVelocity(getVelocity());
 	}
 
 	@Override
 	public ParticleEventListener copy() {
-		return new ParticalVelocityController(velocity);
+		return new ParticalVelocityController(getVelocity());
+	}
+
+	public PVector getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(PVector velocity) {
+		this.velocity = velocity;
 	}
 }
