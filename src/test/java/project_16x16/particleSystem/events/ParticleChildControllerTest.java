@@ -96,4 +96,22 @@ class ParticleChildControllerTest {
 		assertFalse(controller.hasDelay());
 		assertFalse(controller.isSpawnOnDeath());
 	}
+	
+	/**
+	 * Purpose: Test for onUpdateEvent()
+	 * Input: no input for onUpdateEvent()
+	 * Expected:
+	 * 		update the number of ParticleSystems so that those without particles are removed
+	 * 		its number should be 0
+	 */
+	@Test
+	void testOnUpdateEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		
+		ParticleChildController controller = new ParticleChildController(system, 0, true);
+		controller.onUpdateEvent();
+		assertEquals(controller.getParticleSystems().size(), 0);
+	}
 }
