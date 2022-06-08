@@ -71,4 +71,24 @@ class MultiplayerTest {
 		assertEquals(data, m.getData());
 		m.exit();
 	}
+
+	/**
+	 * Purpose: Test for readData() for client
+	 * Input: SideScroller s, hostIP - "127.0.0.1", port - 25559, isHost - false
+	 * Expected:
+	 * 		data should be equal to read one
+	 */
+	@Test
+	void testReadData2() throws ConnectException {
+
+		SideScroller s = new SideScroller();
+		Multiplayer m1 = new Multiplayer(s, "127.0.0.1", 25559, true);
+		Multiplayer m2 = new Multiplayer(s, "127.0.0.1", 25559, false);
+		
+		m1.writeData("Hello test");
+		JSONObject data = m2.readData();
+		assertEquals(data, m2.getData());		
+		m2.exit();
+		m1.exit();
+	}
 }
