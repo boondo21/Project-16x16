@@ -275,4 +275,63 @@ public class AnchorTest {
 		
 		
 	}
+	
+	/**
+	 * Purpose: Change of result value according to Stretch value
+	 * Input: Height() 
+	 * Expected:
+	 * 	return int value
+	 */
+	@Test
+	public void testHeight() {
+		
+		int target;
+		
+		// Horizontal, InverseHorizontal
+		target = anchor.getLocalHeight();
+		
+		anchor.setStretch(Stretch.Horizontal);
+		assertEquals(target, anchor.Height());
+		
+		anchor.setStretch(Stretch.InverseHorizontal);
+		assertEquals(target, anchor.Height());
+
+		// Vertical
+		target = anchor.frameGlobalHeight()-anchor.Y();
+		
+		anchor.setStretch(Stretch.Vertical);
+		assertEquals(target, anchor.Height());
+		
+		// InverseVertical
+		target = anchor.Y()-anchor.frameGlobalHeight();
+		
+		anchor.setStretch(Stretch.InverseVertical);
+		assertEquals(target, anchor.Height());
+		
+		// None
+		target = anchor.getLocalHeight();
+		
+		anchor.setStretch(Stretch.None);
+		assertEquals(target, anchor.Height());
+		
+		
+		
+	}
+	
+	/**
+	 * Purpose: frameGlobal check
+	 * Input: frameGlobal() 
+	 * Expected:
+	 * 	return int value
+	 */
+	@Test
+	public void testframGlobal() {
+		
+		Anchor tmp = new Anchor(anchor, 10, 10, 10, 10);
+		
+		assertEquals(tmp.frameGlobalHeight(), anchor.Height());
+		assertEquals(tmp.frameGlobalWidth(), anchor.Width());
+		assertEquals(tmp.frameGlobalX(), anchor.X());
+		assertEquals(tmp.frameGlobalY(), anchor.Y());
+	}
 }
