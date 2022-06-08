@@ -1,14 +1,13 @@
 package ui;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import javafx.scene.control.Slider;
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
 import project_16x16.ui.AnchorOrigin;
@@ -18,13 +17,13 @@ public class AnchorTest {
 
 	private Anchor anchor;
 	private SideScroller sideScroller;
-	@Before
+	@BeforeAll
 	public void setUp() throws Exception {
 		sideScroller = new SideScroller(); 
 		anchor = new Anchor(sideScroller,10, 10, 10, 10);
 	}
 	
-	@After
+	@AfterAll
 	public void tearDown() throws Exception {
 		anchor=null;
 		sideScroller = null;

@@ -1,18 +1,13 @@
 package ui;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.applet.Applet;
-
-import org.apache.jackrabbit.webdav.lock.Scope;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import processing.core.PGraphics;
 import project_16x16.SideScroller;
-import project_16x16.scene.InitButtonStrategy;
 import project_16x16.scene.PressStartinit;
 import project_16x16.ui.Button;
 
@@ -21,13 +16,13 @@ import project_16x16.ui.Button;
 public class ButtonTest {
 	Button button;
 	SideScroller scroller;
-	@Before
+	@BeforeAll
 	public void setUp() throws Exception {
 		scroller = new SideScroller();
 		button = new Button(scroller);
 	}
 	
-	@After
+	@AfterAll
 	public void tearDown() throws Exception {
 		button=null;
 		scroller=null;
