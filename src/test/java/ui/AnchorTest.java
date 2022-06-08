@@ -60,4 +60,20 @@ public class AnchorTest {
 		
 	}
 	
+	/**
+	 * Purpose: get PApplet property
+	 * Input: getPApplet  
+	 * Expected:
+	 * 	return SideScroller
+	 */
+	@Test
+	public void testgetPApplet() {
+		// hasContainer == false
+		assertEquals(anchor.getPApplet(), sideScroller);
+	
+		// tmp hasContainer == true
+		Anchor tmp = new Anchor(anchor, 10, 10, 10, 10);
+		assertEquals(tmp.getPApplet(), anchor.getPApplet());
+	}
+	
 }
