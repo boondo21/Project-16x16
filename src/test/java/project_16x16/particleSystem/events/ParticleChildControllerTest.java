@@ -133,4 +133,25 @@ class ParticleChildControllerTest {
 		controller.onParticleRunEvent(p);
 		assertEquals(controller.getParticleSystems().size(), 1);
 	}
+
+	/**
+	 * Purpose: Test for onParticleDeathEvent()
+	 * Input: Particle p
+	 * Expected:
+	 * 		if the value of isSpawnedOnDeath is true
+	 * 		new Particle created after death immediately
+	 * 		number of particleSystems should be 1
+	 */
+	@Test
+	void testOnParticleDeathEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		
+		ParticleChildController controller = new ParticleChildController(system, 5, true);
+		controller.onParticleDeathEvent(p);
+		assertEquals(controller.getParticleSystems().size(), 1);
+	}
+
 }
