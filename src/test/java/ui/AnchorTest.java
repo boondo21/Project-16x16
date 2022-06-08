@@ -1,12 +1,14 @@
 package ui;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javafx.scene.control.Slider;
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
 import project_16x16.ui.AnchorOrigin;
@@ -25,6 +27,7 @@ public class AnchorTest {
 	@After
 	public void tearDown() throws Exception {
 		anchor=null;
+		sideScroller = null;
 	}
 	
 	/**
@@ -334,4 +337,61 @@ public class AnchorTest {
 		assertEquals(tmp.frameGlobalX(), anchor.X());
 		assertEquals(tmp.frameGlobalY(), anchor.Y());
 	}
+	
+	
+	/**
+	 * Purpose: hover check
+	 * Input: hover() 
+	 * Expected:
+	 * 	return boolean
+	 */
+	@Test
+	public void testhover() {
+		SideScroller applet = anchor.getPApplet();
+		
+		applet.mouseX = anchor.X()+anchor.Width()-1;
+		applet.mouseY = anchor.Y()+anchor.Height()-1;
+		
+		assertTrue(anchor.hover());
+	}
+	
+	/**
+	 * Purpose: debugMode check
+	 * Input: debugMode() 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testdebugMode() {
+		
+		try {
+			sideScroller.setup();
+			anchor.debugMode();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.print(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Purpose: get/set check
+	 * Input: get/set() 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testgetset() {
+		assertNotNull(anchor.getAnchorOrigin());
+		assertNotNull(anchor.getStretch());
+		try {
+			anchor.setLocalHeight(10);
+			anchor.setLocalWidth(10);
+			anchor.setLocalX(10);
+			anchor.setLocalY(10);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
 }
