@@ -41,5 +41,22 @@ class RotationEmissionTest {
 		assertEquals(2, rotation.getSpread());
 		assertEquals(3, rotation.getDiv());
 	}
+	
+	/**
+	 * Purpose: test for generateNew() method
+	 * Input: (vector, 10, -10, 5, 5)
+	 * Expected:
+	 * 		new values for velocity, acceleration, position
+	 */
+	@Test
+	void testGenerateNew() {
+		PVector vector = new PVector(0, 0);
+		RotationEmission rotation = new RotationEmission(vector, 10, -10, 5, 5);
+		rotation.generateNew();
+		assertFalse(rotation.getVelocity() == rotation.newVelocity.x);
+		assertFalse(rotation.getAcceleration() == rotation.newAcceleration.x);
+		assertFalse(rotation.newPosition.x == 0);
+		assertFalse(rotation.newPosition.y == 0);
+	}
 
 }
