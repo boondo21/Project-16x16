@@ -79,4 +79,20 @@ class ParticleAnimationControllerTest {
 		controller.onParticleRunEvent(p);
 		assertEquals(controller.getImage(p.getFrameCount()), p.getImage());
 	}
+
+	/**
+	 * Purpose: Test for copy() 
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		new ParticleAnimationController object with the same values for rate and images
+	 */
+	@Test
+	void testCopy() {
+		ArrayList<PImage> images = new ArrayList<PImage>();
+		ParticleAnimationController controller = new ParticleAnimationController(images, 10);
+		ParticleAnimationController copy = (ParticleAnimationController) controller.copy();
+		assertEquals(controller.getImages(), copy.getImages());
+		assertEquals(controller.getRate(), copy.getRate());
+	}
+
 }
