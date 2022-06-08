@@ -37,4 +37,21 @@ class ParticleSizeControllerTest {
 		controller.onParticleSpawnEvent(p);
 		assertTrue(p.isUseCustomeSize());
 	}
+
+	/**
+	 * Purpose: Test for onParticleRunEvent() 
+	 * Input: Particle p
+	 * Expected:
+	 * 		size in p should be equal to the one we calculated by values from controller
+	 */
+	@Test
+	void testOnParticleRunEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ParticleSizeController controller = new ParticleSizeController(10, 20);
+		controller.onParticleRunEvent(p);
+		float size = p.getLifespan()/p.getMaxLifespan()*(controller.getStartSize()-controller.getEndSize())+controller.getEndSize();
+		assertEquals(p.getSize(), size);
+	}
 }
