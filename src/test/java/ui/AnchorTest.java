@@ -373,5 +373,25 @@ public class AnchorTest {
 		}
 	}
 	
+	/**
+	 * Purpose: get/set check
+	 * Input: get/set() 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testgetset() {
+		assertNotNull(anchor.getAnchorOrigin());
+		assertNotNull(anchor.getStretch());
+		try {
+			anchor.setLocalHeight(10);
+			anchor.setLocalWidth(10);
+			anchor.setLocalX(10);
+			anchor.setLocalY(10);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
 	
 }
