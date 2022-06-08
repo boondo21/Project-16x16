@@ -58,4 +58,30 @@ class ParticleNoLoopControllerTest {
 		assertEquals(controller.getTotalSpawned(), 0);
 		assertTrue(controller.getParticleSystem().isSpawn());
 	}
+
+	/**
+	 * Purpose: Test for onParticleSpawnEvent() 
+	 * Input: Particle p
+	 * Expected:
+	 * 		totalSpawned number should increase by 1 everytime it called
+	 * 		PartycleSystem.isSpawn should be true until the last spawned particle
+	 */
+	@Test
+	void testOnParticleSpawnEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		ParticleNoLoopController controller = new ParticleNoLoopController(2);
+		controller.onCreateEvent(system);
+		controller.reset();
+		
+		controller.onParticleSpawnEvent(p);
+		assertEquals(controller.getTotalSpawned(), 1);
+		assertTrue(controller.getParticleSystem().isSpawn());
+		
+		controller.onParticleSpawnEvent(p);
+		assertEquals(controller.getTotalSpawned(), 2);
+		assertFalse(controller.getParticleSystem().isSpawn());
+	}
 }
