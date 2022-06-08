@@ -42,4 +42,22 @@ public class AnchorTest {
 		assertEquals(tmp.getPApplet(), anchor.getPApplet());
 	}
 	
+	/**
+	 * Purpose: execute Constructor
+	 * Input: Anchor() make instance 
+	 * Expected:
+	 * 	return Anchor instance
+	 */
+	@Test
+	public void testConstructor() {
+		Anchor tmp = new Anchor(anchor, 10, 10, 10, 10);
+		
+		assertEquals(tmp.getPApplet(), anchor.getPApplet());
+		assertEquals(tmp.getLocalHeight(), 10);
+		assertEquals(tmp.getLocalWidth(), 10);
+		assertEquals(tmp.getLocalX(), 10);
+		assertEquals(tmp.getLocalY(), 10);
+		
+	}
+	
 }
