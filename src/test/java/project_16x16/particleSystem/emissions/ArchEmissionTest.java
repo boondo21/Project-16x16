@@ -32,4 +32,23 @@ class ArchEmissionTest {
 		assertEquals(copy.getMinAngle(), arch.getMinAngle());
 		assertEquals(copy.getMaxAngle(), arch.getMaxAngle());
 	}
+
+	/**
+	 * Purpose: test for Construct() method
+	 * Input: (vector, 0, 1, 2, 3, 4)
+	 * Expected:
+	 * 		return ArchEmission object with given values
+	 */
+	@Test
+	void testArchEmission() {
+		PVector vector = new PVector(0, 0);
+		ArchEmission arch = new ArchEmission(vector, 0, 1, 2, 3, 4);
+		assertNotNull(arch);
+		assertEquals(0, arch.getVelocity());
+		assertEquals(1, arch.getAcceleration());
+		assertEquals(2, arch.getSpread());
+		assertEquals(3, arch.getMinAngle());
+		assertEquals(4, arch.getMaxAngle());
+	}
+
 }
