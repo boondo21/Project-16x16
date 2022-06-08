@@ -30,12 +30,12 @@ import project_16x16.scene.GameplayScene;
 public class Enemy extends CollidableObject {
 
 	private PImage image;
+	private CollisionOccur collideoccur;
 
 	float gravity;
 
 	final PVector velocity = new PVector(0, 0);
 
-	private CollisionOccur collideoccur;
 
 	private static final int collisionRange = 145;
 
@@ -44,7 +44,9 @@ public class Enemy extends CollidableObject {
 
 	public int health;
 
+
 	State enemyState;
+
 
 	/**
 	 * Constructor
@@ -65,6 +67,7 @@ public class Enemy extends CollidableObject {
 		collideoccur.setHeight(height);
 		collideoccur.setPos(pos);
 		collideoccur.setVelocity(velocity);
+
 	}
 
 	/**
@@ -126,6 +129,7 @@ public class Enemy extends CollidableObject {
 		enemyState = false;
 	}
 
+
 	private void checkEnemyCollision() {
 		for (EditableObject o : gameScene.objects) {
 			if (o.equals(this))
@@ -143,7 +147,9 @@ public class Enemy extends CollidableObject {
 						applet.noFill();
 					}
 
+
 					if (collideoccur.checkCollides("futurX")) {
+
 						// enemy left of collision
 						if (pos.x < collision.pos.x) {
 							pos.x = collision.pos.x - collision.width / 2 - width / 2;
@@ -154,7 +160,9 @@ public class Enemy extends CollidableObject {
 						velocity.x = 0;
 						enemyState.dashing = false;
 					}
+
 					if (collideoccur.checkCollides("futurY")) {
+
 						// enemy above collision
 						if (pos.y < collision.pos.y) {
 							if (enemyState.flying) {
@@ -164,6 +172,7 @@ public class Enemy extends CollidableObject {
 							changePosition(collision, enemyState.flying);
 							// enemy below collision
 						} else {
+
 							changePosition(collision, enemyState.jumping);
 						}
 						velocity.y = 0;
@@ -180,6 +189,7 @@ public class Enemy extends CollidableObject {
 	 * @param collision The other object
 	 * @return boolean if it has or has not collided with the object.
 	 */
+
 	// private boolean collides() {
 	// }
 
@@ -213,6 +223,8 @@ public class Enemy extends CollidableObject {
 	// && (pos.y + velocity.y + height / 2 > collision.pos.y - collision.height / 2
 	// && pos.y + velocity.y - height / 2 < collision.pos.y + collision.height / 2);
 	// }
+
+
 
 	@Override
 	public void debug() {
