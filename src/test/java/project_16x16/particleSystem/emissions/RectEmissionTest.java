@@ -25,4 +25,20 @@ class RectEmissionTest {
 		assertEquals(copy.getHeight(), rect.getHeight());
 	}
 
+	/**
+	 * Purpose: test for Construct() method
+	 * Input: (vector, 0, 1, 2, 3)
+	 * Expected:
+	 * 		return RectEmission object with given values
+	 */
+	@Test
+	void testRectEmission() {
+		PVector vector = new PVector(0, 0);
+		RectEmission rect = new RectEmission(vector, 0, 1, 2, 3);
+		assertNotNull(rect);
+		assertEquals(0, rect.getVelocity());
+		assertEquals(1, rect.getAcceleration());
+		assertEquals(2, rect.getWidth());
+		assertEquals(3, rect.getHeight());
+	}
 }
