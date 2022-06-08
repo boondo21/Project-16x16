@@ -29,6 +29,6 @@ public class AreaEmission extends ParticleEmission {
 
 	@Override
 	public ParticleEmission copy() {
-		return new AreaEmission(position, velocity, acceleration, spread);
+		return new AreaEmission(position, getVelocity(), getAcceleration(), getSpread());
 	}
 } 

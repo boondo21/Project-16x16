@@ -38,6 +38,6 @@ public class RotationEmission extends ParticleEmission {
 	
 	@Override
 	public ParticleEmission copy() {
-		return new RotationEmission(position, velocity, acceleration, spread, div);
+		return new RotationEmission(position, getVelocity(), getAcceleration(), getSpread(), div);
 	}
 }
