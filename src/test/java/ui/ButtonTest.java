@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import project_16x16.SideScroller;
+import project_16x16.scene.InitButtonStrategy;
+import project_16x16.scene.PressStartinit;
 import project_16x16.ui.Button;
 
 
@@ -27,15 +29,20 @@ public class ButtonTest {
 		scroller=null;
 	}
 	
+	
 	/**
-	 * Purpose: check setbuttoninit
-	 * Input: setbuttoninit() 
+	 * Purpose: check setInitStategy, setbuttoninit
+	 * Input: setInitStategy() setbuttoninit()
 	 * Expected:
 	 * 	return void
 	 */
 	@Test
-	public void testsetbuttoninit() {
+	public void testsetInitStategy() {
 		try {
+			PressStartinit buttonStrategy = new PressStartinit();
+			buttonStrategy.pressStart = button;
+			buttonStrategy.applet = scroller;
+			button.setInitStategy(buttonStrategy);
 			button.setbuttontinit();
 		} catch (Exception e) {
 			// TODO: handle exception
