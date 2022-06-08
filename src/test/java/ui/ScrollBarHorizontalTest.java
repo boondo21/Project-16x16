@@ -56,4 +56,19 @@ public class ScrollBarHorizontalTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check setBarRatio
+	 * Input: setBarRatio 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testsetBarRatio() {
+		try {
+			scrollBarHorizontal.setBarRatio((float)2.0);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
