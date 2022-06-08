@@ -68,4 +68,20 @@ public class NotificationTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check run
+	 * Input: run 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testrun() {
+		try {
+			Notifications.addNotification("title","message");
+			Notifications.run();		
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
