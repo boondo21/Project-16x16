@@ -154,4 +154,23 @@ class ParticleChildControllerTest {
 		assertEquals(controller.getParticleSystems().size(), 1);
 	}
 
+	/**
+	 * Purpose: Test for copy()
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		the new ParticleChildController object
+	 * 		which has the same delay value
+	 */
+	@Test
+	void testCopy() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		
+		ParticleChildController controller = new ParticleChildController(system, 5, true);
+		ParticleChildController copy = (ParticleChildController) controller.copy();
+		assertEquals(controller.getDelay(), copy.getDelay());
+		assertEquals(controller.hasDelay(), copy.hasDelay());
+	}
+
 }
