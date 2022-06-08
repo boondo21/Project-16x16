@@ -41,4 +41,18 @@ class ParticleAccelerationControllerTest {
 		controller.onParticleSpawnEvent(p);
 		assertEquals(p.getAcceleration(), acceleration.add(new PVector(1, 1)));
 	}
+
+	/**
+	 * Purpose: Test for copy() 
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		acceleration vectors should be equal
+	 */
+	@Test
+	void testCopy() {
+		ParticleAccelerationController controller = new ParticleAccelerationController(new PVector(0, 0));
+		ParticleAccelerationController copy = (ParticleAccelerationController) controller.copy();
+		assertEquals(controller.getAcceleration(), copy.getAcceleration());
+	}
+
 }
