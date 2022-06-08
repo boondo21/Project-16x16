@@ -179,4 +179,57 @@ public class AnchorTest {
 		anchor.setAnchorOrigin(AnchorOrigin.Top);
 		assertEquals(target, anchor.X());
 	}
+	
+	/**
+	 * Purpose: Change of result value according to anchorOrigin value
+	 * Input: Y 
+	 * Expected:
+	 * 	return int value
+	 */
+	@Test
+	public void testY() {
+		
+		int target;
+		
+		// Case top
+		target = anchor.getLocalY()+anchor.frameGlobalY();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Top);
+		assertEquals(target, anchor.Y());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.TopLeft);
+		assertEquals(target, anchor.Y());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.TopRight);
+		assertEquals(target, anchor.Y());
+		
+		// Case bottom
+		target = (anchor.frameGlobalHeight()+anchor.getLocalY())+anchor.frameGlobalY();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Bottom);
+		assertEquals(target, anchor.Y());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.BottomRight);
+		assertEquals(target, anchor.Y());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.BottomLeft);
+		assertEquals(target, anchor.Y());
+		
+		// Case center
+		
+		target = (anchor.frameGlobalHeight()/2 + anchor.getLocalY()) + anchor.frameGlobalY();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Center);
+		assertEquals(target, anchor.Y());
+		
+		//else
+		
+		target = anchor.getLocalY() + anchor.frameGlobalY();
+				
+		anchor.setAnchorOrigin(AnchorOrigin.Left);
+		assertEquals(target, anchor.Y());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Right);
+		assertEquals(target, anchor.Y());
+	}
 }
