@@ -38,4 +38,19 @@ public class NotificationTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check clear
+	 * Input: clear 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testclear() {
+		try {
+			Notifications.clear();
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
