@@ -25,4 +25,21 @@ class RotationEmissionTest {
 		assertEquals(copy.getDiv(), rotation.getDiv());
 	}
 
+	/**
+	 * Purpose: test for Construct() method
+	 * Input: (vector, 0, 1, 2, 3)
+	 * Expected:
+	 * 		return RotationEmission object with given values
+	 */
+	@Test
+	void testRotationEmission() {
+		PVector vector = new PVector(0, 0);
+		RotationEmission rotation = new RotationEmission(vector, 0, 1, 2, 3);
+		assertNotNull(rotation);
+		assertEquals(0, rotation.getVelocity());
+		assertEquals(1, rotation.getAcceleration());
+		assertEquals(2, rotation.getSpread());
+		assertEquals(3, rotation.getDiv());
+	}
+
 }
