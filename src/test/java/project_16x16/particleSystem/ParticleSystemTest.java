@@ -40,4 +40,20 @@ class ParticleSystemTest {
 		system.run();
 		assertTrue(system.getParticles().hasActiveParticles());
 	}
+	
+	/**
+	 * Purpose: Test for preLoad()
+	 * Input: no input for run()
+	 * Expected:
+	 * 		consumer in handler accepts the new created particle
+	 * 		so now there is more active particles: 0->1
+	 */
+	@Test
+	void testPreLoad() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 1, 1, 1);
+		system.preLoad();
+		assertTrue(system.getParticles().hasActiveParticles());
+	}
 }
