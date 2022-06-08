@@ -41,4 +41,24 @@ class ParticlesHandlerTest {
 		Particle p = handler.newParticle();
 		assertNotNull(p);
 	}
+	
+	/**
+	 * Purpose: Test for run()
+	 * Input: no input for run(). PartycleSystem has 1 for spawnAmount
+	 * Expected:
+	 * 		there should be only 1 active particle even after new particle, because it health will be 0
+	 */
+	@Test
+	void testRun() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(null, img, 1, 1, 0);
+		ParticlesHandler handler = new ParticlesHandler(system, applet);
+		handler.run();
+		assertTrue(handler.getActiveParticles().size() == 1);
+		handler.newParticle();
+		handler.run();
+		assertTrue(handler.getActiveParticles().size() == 1);
+	}
+
 }
