@@ -50,4 +50,21 @@ public class ButtonTest {
 		}
 		
 	}
+	
+	/**
+	 * Purpose: check display
+	 * Input: display()
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testdisplay() {
+		try {
+			scroller = new SideScroller();
+			button = new Button(scroller);
+			button.display();
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
