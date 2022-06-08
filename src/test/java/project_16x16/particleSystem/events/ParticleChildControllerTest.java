@@ -26,4 +26,22 @@ class ParticleChildControllerTest {
 		assertTrue(controller.hasDelay());
 		assertFalse(controller.isSpawnOnDeath());
 	}
+
+	/**
+	 * Purpose: Test for Constructor()
+	 * Input: (ParticleSystem system, delay - 5, spawnOnDeath - true)
+	 * Expected:
+	 * 		ParticleChildController object with given values
+	 */
+	@Test
+	void testParticleChildControllerParticleSystemIntBoolean() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 0, 0);
+		
+		ParticleChildController controller = new ParticleChildController(system, 5, true);
+		assertEquals(controller.getDelay(), 5);
+		assertTrue(controller.hasDelay());
+		assertTrue(controller.isSpawnOnDeath());
+	}
 }
