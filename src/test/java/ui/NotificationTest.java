@@ -53,4 +53,19 @@ public class NotificationTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check addNotification
+	 * Input: addNotification 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testaddNotification() {
+		try {
+			Notifications.addNotification("title","message");
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
