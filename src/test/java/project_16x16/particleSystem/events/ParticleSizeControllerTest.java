@@ -21,4 +21,20 @@ class ParticleSizeControllerTest {
 		assertEquals(controller.getStartSize(), 10);
 		assertEquals(controller.getEndSize(), 20);
 	}
+
+	/**
+	 * Purpose: Test for onParticleSpawnEvent() 
+	 * Input: Particle p
+	 * Expected:
+	 * 		useCustomSize in p should be true
+	 */
+	@Test
+	void testOnParticleSpawnEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ParticleSizeController controller = new ParticleSizeController(10, 20);
+		controller.onParticleSpawnEvent(p);
+		assertTrue(p.isUseCustomeSize());
+	}
 }
