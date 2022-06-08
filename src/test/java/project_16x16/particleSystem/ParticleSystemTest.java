@@ -25,4 +25,19 @@ class ParticleSystemTest {
 		assertEquals(system.getSpawnRate(), 0);
 		assertEquals(system.getLifespan(), 0);
 	}
+
+	/**
+	 * Purpose: Test for run()
+	 * Input: no input for run()
+	 * Expected:
+	 * 		adter run() called system handler has one more active particle: 0->1
+	 */
+	@Test
+	void testRun() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 1, 1, 1);
+		system.run();
+		assertTrue(system.getParticles().hasActiveParticles());
+	}
 }
