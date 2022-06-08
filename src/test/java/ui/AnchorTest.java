@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
+import project_16x16.ui.AnchorOrigin;
 
 public class AnchorTest {
 
@@ -123,5 +124,59 @@ public class AnchorTest {
 			System.out.print(e.getMessage());
 		}
 		
+	}
+	
+	
+	/**
+	 * Purpose: Change of result value according to anchorOrigin value
+	 * Input: X 
+	 * Expected:
+	 * 	return int value
+	 */
+	@Test
+	public void testX() {
+		
+		int target;
+		
+		// Case left
+		target = anchor.getLocalX()+anchor.frameGlobalX();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Left);
+		assertEquals(target, anchor.X());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.TopLeft);
+		assertEquals(target, anchor.X());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.BottomLeft);
+		assertEquals(target, anchor.X());
+		
+		// Case right
+		target = (anchor.frameGlobalHeight()+anchor.getLocalX())+anchor.frameGlobalX();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Right);
+		assertEquals(target, anchor.X());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.TopRight);
+		assertEquals(target, anchor.X());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.BottomRight);
+		assertEquals(target, anchor.X());
+		
+		// Case center
+		
+		target = (anchor.frameGlobalWidth()/2 + anchor.getLocalX()) + anchor.frameGlobalX();
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Center);
+		assertEquals(target, anchor.X());
+		
+		//else
+		
+		target = anchor.getLocalX() + anchor.frameGlobalX();
+				
+		anchor.setAnchorOrigin(AnchorOrigin.Bottom);
+		assertEquals(target, anchor.X());
+		
+		anchor.setAnchorOrigin(AnchorOrigin.Top);
+		assertEquals(target, anchor.X());
 	}
 }
