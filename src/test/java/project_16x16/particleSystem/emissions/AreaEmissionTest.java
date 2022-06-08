@@ -39,4 +39,21 @@ class AreaEmissionTest {
 		assertEquals(1, area.getAcceleration());
 		assertEquals(2, area.getSpread());
 	}
+	
+	/**
+	 * Purpose: test for generateNew() method
+	 * Input: (vector, 10, -10, 10)
+	 * Expected:
+	 * 		new values for velocity, acceleration, position
+	 */
+	@Test
+	void testGenerateNew() {
+		PVector vector = new PVector(0, 0);
+		AreaEmission area = new AreaEmission(vector, 10, -10, 10);
+		area.generateNew();
+		assertFalse(area.getVelocity() == area.newVelocity.x);
+		assertFalse(area.getAcceleration() == area.newAcceleration.x);
+		assertFalse(area.newPosition.x == 0);
+		assertFalse(area.newPosition.y == 0);
+	}
 }
