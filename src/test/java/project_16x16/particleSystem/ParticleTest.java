@@ -67,5 +67,37 @@ class ParticleTest {
 		assertEquals(0, p.getLifespan());
 		assertTrue(p.isDead());
 	}
+	
+	/**
+	 * Purpose: Test for run() with full health
+	 * Input: no input for run()
+	 * Expected:
+	 * 		after run Particle gets new position
+	 */
+	@Test
+	void testRun() {
+		SideScroller s = new SideScroller();
+		s.g = new PGraphics();
+		PImage img = new PImage();
+		Particle p = new Particle(s, img);
+		AreaEmission area = new AreaEmission(new PVector(0,0), 1, 1, 0);
+		Consumer<Particle> c = area.getConsumer();
+		
+		p.spawn(c, 100);
+		p.setAcceleration(new PVector(1, 1));
+		p.setVelocity(new PVector(2, 2));
+		PVector oldPosition = new PVector(p.getPosition().x, p.getPosition().y);
+		
+		p.run();
+		assertFalse(p.getPosition() == oldPosition);
+		
+		p.setUseCustomeSize(true);
+		assertTrue(p.isUseCustomeSize());
+		oldPosition = new PVector(p.getPosition().x, p.getPosition().y);
+		
+		p.run();
+		assertFalse(p.getPosition() == oldPosition);
+	}
+	
 
 }
