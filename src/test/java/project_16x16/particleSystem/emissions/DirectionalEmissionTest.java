@@ -42,4 +42,22 @@ class DirectionalEmissionTest {
 		assertEquals(2, direct.getSpread());
 		assertEquals(3, direct.getAngle());
 	}
+	
+	/**
+	 * Purpose: test for generateNew() method
+	 * Input: (vector, 10, -10, 10, 5)
+	 * Expected:
+	 * 		new values for velocity, acceleration, position
+	 */
+	@Test
+	void testGenerateNew() {
+		PVector vector = new PVector(1, 1);
+		DirectionalEmission direct = new DirectionalEmission(vector, 10, -10, 10, 5);
+		direct.generateNew();
+		assertFalse(direct.getVelocity() == direct.newVelocity.x);
+		assertFalse(direct.getAcceleration() == direct.newAcceleration.x);
+		assertFalse(direct.position.x == 1);
+		assertFalse(direct.position.y == 1);
+	}
+
 }
