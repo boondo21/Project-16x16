@@ -22,16 +22,24 @@ public class ParticleAccelerationController implements ParticleEventListener {
 	 * @param acceleration PVector acceleration
 	 */
 	public ParticleAccelerationController(PVector acceleration) {
-		this.acceleration = acceleration;
+		this.setAcceleration(acceleration);
 	}
 	
 	@Override
 	public void onParticleSpawnEvent(Particle particle) {
-		particle.updateAcceleration(acceleration);
+		particle.updateAcceleration(getAcceleration());
 	}
 	
 	@Override
 	public ParticleEventListener copy() {
-		return new ParticleAccelerationController(acceleration);
+		return new ParticleAccelerationController(getAcceleration());
+	}
+
+	public PVector getAcceleration() {
+		return acceleration;
+	}
+
+	public void setAcceleration(PVector acceleration) {
+		this.acceleration = acceleration;
 	}
 }
