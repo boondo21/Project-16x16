@@ -10,6 +10,7 @@ import org.junit.Test;
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
 import project_16x16.ui.AnchorOrigin;
+import project_16x16.ui.Stretch;
 
 public class AnchorTest {
 
@@ -231,5 +232,47 @@ public class AnchorTest {
 		
 		anchor.setAnchorOrigin(AnchorOrigin.Right);
 		assertEquals(target, anchor.Y());
+	}
+	
+	/**
+	 * Purpose: Change of result value according to Stretch value
+	 * Input: Width() 
+	 * Expected:
+	 * 	return int value
+	 */
+	@Test
+	public void testWidth() {
+		
+		int target;
+		
+		// Horizontal
+		target = anchor.frameGlobalWidth() - anchor.X();
+		
+		anchor.setStretch(Stretch.Horizontal);
+		assertEquals(target, anchor.Width());
+		
+		// InverseHorizontal
+		target = anchor.X() - anchor.frameGlobalWidth();
+		
+		anchor.setStretch(Stretch.InverseHorizontal);
+		assertEquals(target, anchor.Width());
+
+		// Vertical, InverseVertical
+		target = anchor.getLocalWidth();
+		
+		anchor.setStretch(Stretch.Vertical);
+		assertEquals(target, anchor.Width());
+		
+		anchor.setStretch(Stretch.InverseVertical);
+		assertEquals(target, anchor.Width());
+		
+		// None
+		target = anchor.getLocalWidth();
+		
+		anchor.setStretch(Stretch.None);
+		assertEquals(target, anchor.Width());
+		
+		
+		
 	}
 }
