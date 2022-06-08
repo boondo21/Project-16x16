@@ -54,4 +54,20 @@ class ParticleSizeControllerTest {
 		float size = p.getLifespan()/p.getMaxLifespan()*(controller.getStartSize()-controller.getEndSize())+controller.getEndSize();
 		assertEquals(p.getSize(), size);
 	}
+
+	/**
+	 * Purpose: Test for copy() 
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		startSize should be same
+	 * 		endSize should be same
+	 */
+	@Test
+	void testCopy() {
+		ParticleSizeController controller = new ParticleSizeController(10, 20);
+		ParticleSizeController copy = (ParticleSizeController) controller.copy();
+		assertEquals(controller.getStartSize(), copy.getStartSize());
+		assertEquals(controller.getEndSize(), copy.getEndSize());
+	}
+
 }
