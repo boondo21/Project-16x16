@@ -23,4 +23,20 @@ class AreaEmissionTest {
 		assertEquals(copy.getAcceleration(), area.getAcceleration());
 		assertEquals(copy.getSpread(), area.getSpread());
 	}
+
+	/**
+	 * Purpose: test for Construct() method
+	 * Input: (vector, 0, 1, 2)
+	 * Expected:
+	 * 		return AreaEmission object with given values
+	 */
+	@Test
+	void testAreaEmission() {
+		PVector vector = new PVector(0, 0);
+		AreaEmission area = new AreaEmission(vector, 0, 1, 2);
+		assertNotNull(area);
+		assertEquals(0, area.getVelocity());
+		assertEquals(1, area.getAcceleration());
+		assertEquals(2, area.getSpread());
+	}
 }
