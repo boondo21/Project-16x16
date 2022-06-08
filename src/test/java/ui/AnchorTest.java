@@ -334,4 +334,21 @@ public class AnchorTest {
 		assertEquals(tmp.frameGlobalX(), anchor.X());
 		assertEquals(tmp.frameGlobalY(), anchor.Y());
 	}
+	
+	
+	/**
+	 * Purpose: hover check
+	 * Input: hover() 
+	 * Expected:
+	 * 	return boolean
+	 */
+	@Test
+	public void testhover() {
+		SideScroller applet = anchor.getPApplet();
+		
+		applet.mouseX = anchor.X()+anchor.Width()-1;
+		applet.mouseY = anchor.Y()+anchor.Height()-1;
+		
+		assertTrue(anchor.ho);
+	}
 }
