@@ -106,4 +106,22 @@ public class AnchorTest {
 		Anchor tmp = new Anchor(anchor, 10, 10, 10, 10);
 		assertEquals(tmp.getContainer(), anchor);
 	}
+	
+	
+	/**
+	 * Purpose: set Container
+	 * Input: setContainer  
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testsetContainer() {
+		try {
+			Anchor tmp = new Anchor(new SideScroller(), 10, 10, 10, 10);
+			anchor.setContainer(tmp);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		
+	}
 }
