@@ -76,4 +76,18 @@ public class AnchorTest {
 		assertEquals(tmp.getPApplet(), anchor.getPApplet());
 	}
 	
+	/**
+	 * Purpose: set PApplet property
+	 * Input: setPApplet  
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testsetPApplet() {
+		try {
+			anchor.setPApplet(sideScroller);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
