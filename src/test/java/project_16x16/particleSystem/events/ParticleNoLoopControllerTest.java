@@ -84,4 +84,20 @@ class ParticleNoLoopControllerTest {
 		assertEquals(controller.getTotalSpawned(), 2);
 		assertFalse(controller.getParticleSystem().isSpawn());
 	}
+
+	/**
+	 * Purpose: Test for copy() 
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		spawnedAmount should be same
+	 * 		totalSpawned should be same
+	 */
+	@Test
+	void testCopy() {
+		ParticleNoLoopController controller = new ParticleNoLoopController(20);
+		ParticleNoLoopController copy = (ParticleNoLoopController) controller.copy();
+		assertEquals(controller.getSpawnAmount(), copy.getSpawnAmount());
+		assertEquals(controller.getTotalSpawned(), copy.getTotalSpawned());
+	}
+
 }
