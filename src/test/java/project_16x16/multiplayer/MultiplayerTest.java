@@ -56,4 +56,19 @@ class MultiplayerTest {
 		m2.exit();
 		m1.exit();
 	}
+
+	/**
+	 * Purpose: Test for readData() for host
+	 * Input: SideScroller s, hostIP - "127.0.0.1", port - 25562, isHost - true
+	 * Expected:
+	 * 		data should be equal to read one
+	 */
+	@Test
+	void testReadData() throws ConnectException {
+		SideScroller s = new SideScroller();
+		Multiplayer m = new Multiplayer(s, "127.0.0.1", 25562, true);
+		JSONObject data = m.readData();
+		assertEquals(data, m.getData());
+		m.exit();
+	}
 }
