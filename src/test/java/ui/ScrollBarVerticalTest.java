@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import processing.event.MouseEvent;
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
 import project_16x16.ui.ScrollBarHorizontal;
@@ -50,6 +51,22 @@ public class ScrollBarVerticalTest {
 	public void testsetBarRatio() {
 		try {
 			scrollBarVertical.setBarRatio((float)2.0);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Purpose: Check mouseWheel
+	 * Input: mouseWheel 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testmouseWheel() {
+		try {
+			MouseEvent mouseEvent = new MouseEvent(anchor, 10, MouseEvent.CLICK, 10, 10, 10, 10, 10); 
+			scrollBarVertical.mouseWheel(mouseEvent);
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
