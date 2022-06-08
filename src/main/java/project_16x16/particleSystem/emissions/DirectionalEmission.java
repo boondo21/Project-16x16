@@ -28,14 +28,14 @@ public class DirectionalEmission extends ParticleEmission {
 
 	public void newVelocity() {
 		newVelocity = new PVector();
-		newVelocity.x = (float) (velocity*Math.cos(angle));
-		newVelocity.y = (float) (velocity*Math.sin(angle));
+		newVelocity.x = (float) (getVelocity()*Math.cos(getAngle()));
+		newVelocity.y = (float) (getVelocity()*Math.sin(getAngle()));
 	}
 
 	public void newAcceleration() {
 		newAcceleration = new PVector();
-		newAcceleration.x = (float) (acceleration*Math.cos(angle));
-		newAcceleration.y = (float) (acceleration*Math.sin(angle));
+		newAcceleration.x = (float) (getAcceleration()*Math.cos(getAngle()));
+		newAcceleration.y = (float) (getAcceleration()*Math.sin(getAngle()));
 	}
 
 	@Override
@@ -49,15 +49,15 @@ public class DirectionalEmission extends ParticleEmission {
 	public void newPosition() {
 		PVector p = position.copy();
 		Random ran = new Random();
-		float offset = (ran.nextFloat()*spread*2f)-spread;
-		p.x += (float) (offset*Math.cos(angle+Math.PI/2));
-		p.y += (float) (offset*Math.sin(angle+Math.PI/2));
+		float offset = (ran.nextFloat()*getSpread()*2f)-getSpread();
+		p.x += (float) (offset*Math.cos(getAngle()+Math.PI/2));
+		p.y += (float) (offset*Math.sin(getAngle()+Math.PI/2));
 		setPosition(p);
 	}
 	
 	@Override
 	public ParticleEmission copy() {
-		return new  DirectionalEmission(position, velocity, acceleration, spread, angle);
+		return new  DirectionalEmission(position, getVelocity(), getAcceleration(), getSpread(), getAngle());
 	}
 
 	@Override
