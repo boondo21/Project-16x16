@@ -2,6 +2,8 @@ package ui;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.applet.Applet;
+
 import org.apache.jackrabbit.webdav.lock.Scope;
 import org.junit.After;
 import org.junit.Before;
@@ -66,5 +68,17 @@ public class ButtonTest {
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
+	}
+	
+	/**
+	 * Purpose: check update
+	 * Input: update()
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testUpdate() {
+		button.applet.mousePressEvent = true;
+		button.update();
 	}
 }
