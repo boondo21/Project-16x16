@@ -51,4 +51,21 @@ class ArchEmissionTest {
 		assertEquals(4, arch.getMaxAngle());
 	}
 
+	/**
+	 * Purpose: test for generateNew() method
+	 * Input: (vector, 10, -10, 10, 5, 1)
+	 * Expected:
+	 * 		new values for velocity, acceleration, position
+	 */
+	@Test
+	void testGenerateNew() {
+		PVector vector = new PVector(0, 0);
+		ArchEmission arch = new ArchEmission(vector, 10, -10, 10, 5, 1);
+		arch.generateNew();
+		assertFalse(arch.getVelocity() == arch.newVelocity.x);
+		assertFalse(arch.getAcceleration() == arch.newAcceleration.x);
+		assertFalse(arch.newPosition.x == 0);
+		assertFalse(arch.newPosition.y == 0);
+	}
+
 }
