@@ -26,4 +26,19 @@ class ParticlesHandlerTest {
 		assertEquals(handler.getParticleSystem(), system);
 	}
 
+	/**
+	 * Purpose: Test for newParticle()
+	 * Input: no input for newParticle()
+	 * Expected:
+	 * 		it should return new particle
+	 */
+	@Test
+	void testNewParticle() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(null, img, 5, 5, 5);
+		ParticlesHandler handler = new ParticlesHandler(system, applet);
+		Particle p = handler.newParticle();
+		assertNotNull(p);
+	}
 }
