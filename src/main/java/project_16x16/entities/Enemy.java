@@ -31,13 +31,14 @@ public class Enemy extends CollidableObject {
 
 	private PImage image;
 	private CollisionOccur collideoccur;
-
+	
 	float gravity;
 
 	final PVector velocity = new PVector(0, 0);
+
 	private CollisionOccur collideoccur;
-	private static final int collisionRange = 145;
-	
+
+	private static final int collisionRange = 145
 	
 	final int speedWalk;
 	private final int speedJump;
