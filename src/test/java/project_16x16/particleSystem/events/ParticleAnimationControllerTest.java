@@ -61,4 +61,22 @@ class ParticleAnimationControllerTest {
 		controller.onParticleSpawnEvent(p);
 		assertEquals(controller.getImage(p.getMaxLifespan(), p.getLifespan()), p.getImage());
 	}
+
+	/**
+	 * Purpose: Test for onParticleRunEvent() 
+	 * Input: Particle p
+	 * Expected:
+	 * 		now particle has a new image that was chosen by controller
+	 */
+	@Test
+	void testOnParticleRunEvent() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(applet, img);
+		ArrayList<PImage> images = new ArrayList<PImage>();
+		images.add(img);
+		ParticleAnimationController controller = new ParticleAnimationController(images, 10);
+		controller.onParticleRunEvent(p);
+		assertEquals(controller.getImage(p.getFrameCount()), p.getImage());
+	}
 }
