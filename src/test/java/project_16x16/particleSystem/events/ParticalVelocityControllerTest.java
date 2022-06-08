@@ -2,15 +2,12 @@ package project_16x16.particleSystem.events;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.function.Consumer;
-
 import org.junit.jupiter.api.Test;
 
 import processing.core.PImage;
 import processing.core.PVector;
 import project_16x16.SideScroller;
 import project_16x16.particleSystem.Particle;
-import project_16x16.particleSystem.ParticlePreloadSystem;
 
 class ParticalVelocityControllerTest {
 	/**
