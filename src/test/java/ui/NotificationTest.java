@@ -84,4 +84,19 @@ public class NotificationTest {
 			System.out.print(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Purpose: Check stageResized
+	 * Input: stageResized 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void teststageResized() {
+		try {
+			Notifications.stageResized();	
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
