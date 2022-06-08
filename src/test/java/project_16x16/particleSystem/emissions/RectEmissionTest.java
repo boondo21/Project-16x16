@@ -41,4 +41,22 @@ class RectEmissionTest {
 		assertEquals(2, rect.getWidth());
 		assertEquals(3, rect.getHeight());
 	}
+	
+	/**
+	 * Purpose: test for generateNew() method
+	 * Input: (vector, 10, -10, 5, 5)
+	 * Expected:
+	 * 		new values for velocity, acceleration, position
+	 */
+	@Test
+	void testGenerateNew() {
+		PVector vector = new PVector(0, 0);
+		RectEmission rect = new RectEmission(vector, 10, -10, 5, 5);
+		rect.generateNew();
+		assertFalse(rect.getVelocity() == rect.newVelocity.x);
+		assertFalse(rect.getAcceleration() == rect.newAcceleration.x);
+		assertFalse(rect.position.x == 0);
+		assertFalse(rect.position.y == 0);
+	}
+
 }
