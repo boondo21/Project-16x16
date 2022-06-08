@@ -30,4 +30,24 @@ class ParticleTest {
 		assertSame(img, p.getImage());
 		assertSame(s, p.getApplet());
 	}
+	
+	/**
+	 * Purpose: Test for spawn() with 100 health
+	 * Input: (Consumer<Particle> c, 100)
+	 * Expected:
+	 * 		LifeSpan and MaxLifeSpan should be set to 100
+	 */
+	@Test
+	void testSpawn() {
+		SideScroller s = new SideScroller();
+		PImage img = new PImage();
+		Particle p = new Particle(s, img);
+		AreaEmission area = new AreaEmission(new PVector(0,0), 1, 1, 0);
+		Consumer<Particle> c = area.getConsumer();
+		p.spawn(c, 100);
+		assertEquals(100, p.getMaxLifespan());
+		assertEquals(100, p.getLifespan());
+	}
+	
+
 }
