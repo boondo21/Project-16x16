@@ -30,7 +30,7 @@ import project_16x16.scene.GameplayScene;
 public class Enemy extends CollidableObject {
 
 	private PImage image;
-	private CollisionOccur collideoccur;
+	//private CollisionOccur collideoccur;
 
 	float gravity;
 
