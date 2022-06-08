@@ -68,4 +68,18 @@ class ArchEmissionTest {
 		assertFalse(arch.newPosition.y == 0);
 	}
 
+	/**
+	 * Purpose: test for getConsumer() method
+	 * Input: no input
+	 * Expected:
+	 * 		return Consumer<Particle>
+	 */
+	@Test
+	void testGetConsumer() {
+		PVector vector = new PVector(0, 0);
+		ArchEmission arch = new ArchEmission(vector, 0, 0, 0, 0, 0);
+		Consumer<Particle> p = arch.getConsumer();
+		assertNotNull(p);
+	}
+
 }
