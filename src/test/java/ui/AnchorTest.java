@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javafx.scene.control.Slider;
 import project_16x16.SideScroller;
 import project_16x16.ui.Anchor;
 import project_16x16.ui.AnchorOrigin;
@@ -26,6 +27,7 @@ public class AnchorTest {
 	@After
 	public void tearDown() throws Exception {
 		anchor=null;
+		sideScroller = null;
 	}
 	
 	/**
@@ -352,4 +354,24 @@ public class AnchorTest {
 		
 		assertTrue(anchor.hover());
 	}
+	
+	/**
+	 * Purpose: debugMode check
+	 * Input: debugMode() 
+	 * Expected:
+	 * 	return void
+	 */
+	@Test
+	public void testdebugMode() {
+		
+		try {
+			sideScroller.setup();
+			anchor.debugMode();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.print(e.getMessage());
+		}
+	}
+	
+	
 }
