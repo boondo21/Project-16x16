@@ -56,4 +56,24 @@ class ParticleSystemTest {
 		system.preLoad();
 		assertTrue(system.getParticles().hasActiveParticles());
 	}
+
+	/**
+	 * Purpose: Test for copy()
+	 * Input: no input for copy()
+	 * Expected:
+	 * 		copied object has the same values and object for image
+	 */
+	@Test
+	void testCopy() {
+		SideScroller applet = new SideScroller();
+		PImage img = new PImage();
+		ParticleSystem system = new ParticleSystem(applet, img, 0, 1, 2);
+		ParticleSystem copy = system.copy();
+
+		assertSame(system.getImage(), copy.getImage());
+		assertEquals(system.getSpawnAmount(), copy.getSpawnAmount());
+		assertEquals(system.getSpawnRate(), copy.getSpawnRate());
+		assertEquals(system.getLifespan(), copy.getLifespan());
+	}
+
 }
