@@ -1,6 +1,7 @@
 package ui;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.After;
@@ -349,6 +350,6 @@ public class AnchorTest {
 		applet.mouseX = anchor.X()+anchor.Width()-1;
 		applet.mouseY = anchor.Y()+anchor.Height()-1;
 		
-		assertTrue(anchor.ho);
+		assertTrue(anchor.hover());
 	}
 }
