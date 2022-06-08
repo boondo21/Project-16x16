@@ -1,6 +1,7 @@
 package ui;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.applet.Applet;
 
@@ -9,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import processing.core.PGraphics;
 import project_16x16.SideScroller;
 import project_16x16.scene.InitButtonStrategy;
 import project_16x16.scene.PressStartinit;
@@ -64,6 +66,10 @@ public class ButtonTest {
 		try {
 			scroller = new SideScroller();
 			button = new Button(scroller);
+			
+			assertNotNull(button.applet);
+			button.applet.recorder = new PGraphics();
+			button.applet.g = new PGraphics();
 			button.display();
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
