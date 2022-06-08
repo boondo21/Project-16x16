@@ -1,5 +1,5 @@
 package project_16x16.entities;
-
+import project_16x16.entities.CollisionOccur;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +20,8 @@ import project_16x16.objects.EditableObject;
 import project_16x16.objects.GameObject;
 import project_16x16.projectiles.Swing;
 import project_16x16.scene.GameplayScene;
+import project_16x16.objects.CollidableObject;
+import project_16x16.objects.CollidableObject;
 
 /**
  * <h1>Enemy Class</h1>
