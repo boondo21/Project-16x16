@@ -122,4 +122,22 @@ class MultiplayerTest {
 		m2.exit();
 		m1.exit();
 	}
+
+	/**
+	 * Purpose: Test for exit() for client and host
+	 * Input: SideScroller s, hostIP - "127.0.0.1", port - 25560, isHost - false and true
+	 * Expected:
+	 * 		server and client should not be active
+	 */
+	@Test
+	void testExit() throws ConnectException {
+		SideScroller s = new SideScroller();
+		Multiplayer m1 = new Multiplayer(s, "127.0.0.1", 25560, true);
+		Multiplayer m2 = new Multiplayer(s, "127.0.0.1", 25560, false);
+		m2.exit();
+		m1.exit();
+		assertFalse(m1.getServer().active());
+		assertFalse(m2.getClient().active());
+	}
+
 }
